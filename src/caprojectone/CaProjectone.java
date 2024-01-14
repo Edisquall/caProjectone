@@ -4,6 +4,9 @@
  */
 package caprojectone;
 
+import java.io.FileReader;
+import java.util.Scanner;
+
 /**
  *
  * @author Edi
@@ -14,11 +17,30 @@ public class CaProjectone {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    try {
-        
-    } catch {
-        (Exception e)
-    }
-    }
+        try {
+            Scanner sc = new Scanner(new FileReader("C:\\Users\\Edi\\Documents\\NetBeansProjects\\caProjectone\\student.txt"));
+            //Reading registrantion details from the file
+            String data = sc.nextLine();
+            String[] splitString = data.split(" ");
+            //Splitting first name from the second name
+            if (splitString[0].matches("[a-zA-Z]+")) {
+                System.out.println("Valid name");
+            } else {
+                System.out.println("First name must be only letters");
+                //Making sure first name has only letters
+            }
+            if (!splitString[1].matches (".*[.,+*?^$()\\[\\]{}|@].*")) {
+                System.out.println("Valid name");
+            } else {
+                System.out.println("Second name must be only letters and numbers");
+            } // Making sure second name has only letters and numbers
     
+            
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
 }
