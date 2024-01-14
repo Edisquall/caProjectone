@@ -22,10 +22,6 @@ public class CaProjectone {
         try {
             //Reading registrantion details from the file
             Scanner sc = new Scanner(new FileReader("C:\\Users\\Edi\\Documents\\NetBeansProjects\\caProjectone\\student.txt"));
-
-            //Writting valid data to a file
-            BufferedWriter bw = new BufferedWriter(new FileWriter("status.txt"));
-            
            
             //reading first line - Stundent name
             while (sc.hasNextLine()) {
@@ -91,36 +87,23 @@ public class CaProjectone {
                     System.out.println("First 2 characters must be a number.");
                 } else {
                     System.out.println("Student number is valid");
-                    //writting to the file
-                    bw.write(firstTwo);
                 }
                 if (!validation2) {
                     System.out.println("Third and fourth characters must be lette");
                 } else {
                     System.out.println("Student number is valid");
-                     //writting to the file
-                    bw.write(thirdFourth);
                 }
                 if (!validation3) {
                     System.out.println("Fifth character must be a letter or a nunber");
                 } else {
                     System.out.println("Student number is valid");
-                     //writting to the file
-                    bw.write(fourth);
                 }
                 if (!validation4) {
                     System.out.println("The following characters must be number");
                 } else {
                     System.out.println("Student number is valid");
-                     //writting to the file
-                    bw.write(sixthForward);
-                    bw.close();
                 }
-                
-                //Verifying the amount of classes
-                
-                
-                
+                   
             }
             sc.close();
         } catch (Exception e) {
