@@ -22,7 +22,8 @@ public class CaProjectone {
         try {
             //Reading registrantion details from the file
             Scanner sc = new Scanner(new FileReader("C:\\Users\\Edi\\Documents\\NetBeansProjects\\caProjectone\\student.txt"));
-           
+            BufferedWriter bw = new BufferedWriter(new FileWriter("status.txt"));
+
             //reading first line - Stundent name
             while (sc.hasNextLine()) {
                 String data = sc.nextLine();
@@ -103,14 +104,43 @@ public class CaProjectone {
                 } else {
                     System.out.println("Student number is valid");
                 }
-                   
+                //Verifying and write the details in the doc.
+                if (firstTwo.matches("[0-9]+")) {
+                    bw.write(registration.substring(0, 2));
+                } else {
+                    System.out.println("Your registration number is not registered");
+                }
+                if (thirdFourth.matches("[a-zA-Z]+")) {
+                    bw.write(registration.substring(2, 4));
+                } else {
+                    System.out.println("Your registration number is not registered");  
+                }
+                if (fourth.matches("[0-9]+") || fourth.matches("[a-zA-Z]+")) {
+                    bw.write(registration.substring(4, 5));
+                } else {
+                    System.out.println("Your registration number is not registered");
+                }
+                if (sixthForward.matches("[0-9]+")) {
+                    bw.write(registration.substring(5, registration.length()));
+                } else {
+                    System.out.println("Your registration number is not registered");
+                }
+                int dashIndex = registration.indexOf("-");
+                bw.write(dashIndex);
+
+                if (!splitString[1].matches(".*[.,+*?^$()\\[\\]{}|@].*")) {
+                    bw.write(splitString[1]);
+                    bw.close();
+
+                } else {
+                    System.out.println("Your name is not registered");
+                }
+
             }
             sc.close();
         } catch (Exception e) {
             System.out.println(e);
         }
-        
-        
 
     }
 
