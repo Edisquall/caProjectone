@@ -25,7 +25,9 @@ public class CaProjectone {
             BufferedWriter bw = new BufferedWriter(new FileWriter("status.txt"));
 
             //reading first line - Stundent name
+            boolean flag = true;
             while (sc.hasNextLine()) {
+                flag = true;
                 String data = sc.nextLine();
 
                 //reading second line - Number of classes
@@ -43,30 +45,36 @@ public class CaProjectone {
                     System.out.println("Valid name");
                 } else {
                     System.out.println("First name must be only letters");
+                    flag = false;
                 }
                 // Making sure second name has only letters and numbers
                 if (!splitString[1].matches(".*[.,+*?^$()\\[\\]{}|@].*")) {
                     System.out.println("Valid name");
                 } else {
                     System.out.println("Second name must be only letters and numbers");
+                    flag = false;
                 }
 
                 //Working on a number os classes
-                classesNum = Integer.parseInt(classes);
-                // Making sure that number of classes are valid
-                if (classesNum < 8 && classesNum > 1) {
-                    System.out.println("Valid number the classes");
-                } else if (classesNum == 1 && classesNum == 8) {
-                    System.out.println("Valid number the classes");
-                } else {
-                    System.out.println("Number of classes must be 1 to 8");
+                try {
+                    classesNum = Integer.parseInt(classes);
+                } catch (Exception e) {
+                    System.out.println("This must be number");
                 }
+                // Making sure that number of classes are valid
+                 if (classesNum >= 1 && classesNum <= 8) {
+                    System.out.println("Valid number the classes");
+                 } else {
+                  System.out.println("Number of classes must be 1 to 8");
+                 flag = false;
+                              }
 
                 // Working on registratio  number
                 if (registration.length() > 6) {
                     System.out.println("Correct registration");
                 } else {
                     System.out.println("Your registration is missing numbers or letters");
+                    flag = false;
                 }
                 // Separating the first 2 character to specify as a letter
                 String firstTwo = registration.substring(0, 2);
@@ -86,57 +94,46 @@ public class CaProjectone {
                 boolean validation4 = sixthForward.matches("[0-9]+");
                 if (!validation1) {
                     System.out.println("First 2 characters must be a number.");
-                } else {
-                    System.out.println("Student number is valid");
+                    flag = false;
                 }
                 if (!validation2) {
-                    System.out.println("Third and fourth characters must be lette");
+                    System.out.println("Third and fourth characters must be letter");
+                    flag = false;
                 } else {
                     System.out.println("Student number is valid");
                 }
                 if (!validation3) {
                     System.out.println("Fifth character must be a letter or a nunber");
+                    flag = false;
                 } else {
                     System.out.println("Student number is valid");
                 }
                 if (!validation4) {
                     System.out.println("The following characters must be number");
+                    flag = false;
                 } else {
                     System.out.println("Student number is valid");
                 }
+                //Workload
+                String light = "";
+                if (classesNum == 1) {
+                    light = "Very Light";
+                } else if (classesNum == 2) {
+                    light = "Light";
+                } else if (classesNum >= 3 && classesNum <= 5) {
+                    light = "Part Time";
+                } else if (classesNum >= 6) {
+                    light = "Full Time";
+                }
+
+                if (flag) {
+                    System.out.println("write into the file");
+                    bw.write(registration + " - " + splitString[1] + "\n" + light + "\n");
+                }
                 //Verifying and write the details in the doc.
-                if (firstTwo.matches("[0-9]+")) {
-                    bw.write(registration.substring(0, 2));
-                } else {
-                    System.out.println("Your registration number is not registered");
-                }
-                if (thirdFourth.matches("[a-zA-Z]+")) {
-                    bw.write(registration.substring(2, 4));
-                } else {
-                    System.out.println("Your registration number is not registered");  
-                }
-                if (fourth.matches("[0-9]+") || fourth.matches("[a-zA-Z]+")) {
-                    bw.write(registration.substring(4, 5));
-                } else {
-                    System.out.println("Your registration number is not registered");
-                }
-                if (sixthForward.matches("[0-9]+")) {
-                    bw.write(registration.substring(5, registration.length()));
-                } else {
-                    System.out.println("Your registration number is not registered");
-                }
-                int dashIndex = registration.indexOf("-");
-                bw.write(dashIndex);
-
-                if (!splitString[1].matches(".*[.,+*?^$()\\[\\]{}|@].*")) {
-                    bw.write(splitString[1]);
-                    bw.close();
-
-                } else {
-                    System.out.println("Your name is not registered");
-                }
 
             }
+            bw.close();
             sc.close();
         } catch (Exception e) {
             System.out.println(e);
