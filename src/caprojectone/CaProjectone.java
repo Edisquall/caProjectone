@@ -141,12 +141,51 @@ public class CaProjectone {
                     System.out.println("Number should be be between 1 and 200");
                 }
             }
-            bw.close();
             sc.close();
+
+            bw.close();
+
         } catch (Exception e) {
             System.out.println(e);
         }
+        // I tried to make the challenge 3 but I was not able to go forward
+        // Challange 3 getting info from console
+//        try {
+//            Scanner scan = new Scanner(System.in);
+//            boolean flag2 = true;
+//            System.out.println("Please digit 1 if you want to write the info on the file and 2 if you want to write the information on console.");
+//            int studentInfo = scan.nextInt();
+//            if (studentInfo == 2) {
+//                System.out.println("Follow the questions below");
+//            } if (studentInfo == 1) {
+//                System.out.println("Please add the information in the file Status");
+//                flag2 = false;
+//            } else {      
+//            }
+//          
+//                System.out.println("Please write your name.");
+//                String StudentName = scan.nextLine();
+//                if (StudentName.matches("[a-zA-Z]+")) {
+//                    System.out.println("Valid name");
+//                } else { 
+//                    System.out.println("First name must be only letters");
+//                    flag2 = false;
+//                }
+//            System.out.println("Please write your name.");
+//            String StudentName = scan.nextLine();
+//            
+//            
+//            
+//            System.out.println("Please write your surname.");
+//            String StudentSurname = scan.nextLine();
+//            System.out.println("Please write number of class.");
+//            String NunberOfClass = scan.nextLine();
+//            System.out.println("Please write your Student Number.");
+//            String StudentNum = scan.nextLine();
+//                }catch (Exception e) {
+//            System.out.println(e);
+        }
 
-    }
+            
 
-}
+        }
