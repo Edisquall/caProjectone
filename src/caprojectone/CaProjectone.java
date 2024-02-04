@@ -77,25 +77,25 @@ public class CaProjectone {
                 // Separating the first 2 character to specify as a letter
                 String firstTwo = registration.substring(0, 2);
 
-                // Separating the third and fourth character to specify as a number
+                // Separating the third and fifth character to specify as a number
                 String thirdFourth = registration.substring(2, 4);
 
                 // Separating the first fifth character to specify as a letter or number
-                String fourth = registration.substring(4, 5);
+                String fifth = registration.substring(4, 5);
                 //Making sure that the end of the student registration is only numbers
                 String sixthForward = registration.substring(5, registration.length());
 
                 //Rulling to make sure the registration is valid */
                 boolean validation1 = firstTwo.matches("[0-9]+");
                 boolean validation2 = thirdFourth.matches("[a-zA-Z]+");
-                boolean validation3 = fourth.matches("[0-9]+") || fourth.matches("[a-zA-Z]+");
+                boolean validation3 = fifth.matches("[0-9]+") || fifth.matches("[a-zA-Z]+");
                 boolean validation4 = sixthForward.matches("[0-9]+");
                 if (!validation1) {
                     System.out.println("First 2 characters must be a number.");
                     flag = false;
                 }
                 if (!validation2) {
-                    System.out.println("Third and fourth characters must be letter");
+                    System.out.println("Third and fifth characters must be letter");
                     flag = false;
                 }
                 if (!validation3) {
@@ -124,13 +124,12 @@ public class CaProjectone {
                     bw.write(registration + " - " + splitString[1] + "\n" + workLoad + "\n");
                 }
                
-                int parsedFirstTwo = Integer.parseInt(String.valueOf(firstTwo));
-                boolean validationYear = (parsedFirstTwo >= 20);
-                 if (!validationYear) {
-                    System.out.println("Registraion year must be 2020 or more");
-                    flag = false;
-                 }
+                 
+                 // Third challenge giving an option to put input the data through console
+                 
+                 
             }
+            
             bw.close();
             sc.close();
         } catch (Exception e) {
