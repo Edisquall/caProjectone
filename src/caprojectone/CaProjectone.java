@@ -13,6 +13,8 @@ import java.util.Scanner;
  *
  * @author Edi
  */
+// GitHub Link https://github.com/Edisquall/caProjectone
+
 public class CaProjectone {
 
     /**
@@ -119,17 +121,30 @@ public class CaProjectone {
                 } else if (classesNum >= 6) {
                     workLoad = "Full Time";
                 }
+                
                 //Verifying and write the details in the doc.
                 if (flag) {
                     bw.write(registration + " - " + splitString[1] + "\n" + workLoad + "\n");
                 }
-               
-                 
-                 // Third challenge giving an option to put input the data through console
-                 
-                 
+                
+//               // Challenge one - Make sure that the year in the registration is 2020 or more
+//                int parsedFirstTwo = Integer.parseInt(String.valueOf(firstTwo));
+//                boolean validationYear = (parsedFirstTwo >= 20);
+//                 if (!validationYear) {
+//                    System.out.println("Registraion year must be 2020 or more");
+//                 }
+//                 
+//                 // Second challege make sure that the numbers after the letters are reasonable 1 -200
+//                 String restNum = registration.substring(2, registration.length());
+//                 String onlyNum = restNum.replaceAll("[A-zA-Z]+","");
+//                 int parsedRestNum = Integer.parseInt(String.valueOf(restNum));
+//                 boolean resonableValidation = (parsedRestNum>= 1 && parsedRestNum <= 200);
+//                 
+//                 if (!resonableValidation) {
+//                     System.out.println ("Number should be be between 1 and 200");
+//                 }
+ 
             }
-            
             bw.close();
             sc.close();
         } catch (Exception e) {
