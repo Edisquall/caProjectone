@@ -39,6 +39,7 @@ public class CaProjectone {
                 //Splitting first name from the second name
                 int classesNum;
                 String[] splitString = data.split(" ");
+                
 
                 //Making sure first name has only letters
                 if (splitString[0].matches("[a-zA-Z]+")) {
@@ -56,18 +57,15 @@ public class CaProjectone {
                 }
 
                 //Working on a number os classes
-                try {
-                    classesNum = Integer.parseInt(classes);
-                } catch (Exception e) {
-                    System.out.println("This must be number");
+                 classesNum = Integer.parseInt(classes);
+
+                // Making sure that the number of classes is valid
+                if (classesNum >= 1 && classesNum <= 8) {
+                    System.out.println("Valid number of classes");
+                } else {
+                    System.out.println("Number of classes must be between 1 and 8");
+                    flag = false;
                 }
-                // Making sure that number of classes are valid
-                 if (classesNum >= 1 && classesNum <= 8) {
-                    System.out.println("Valid number the classes");
-                 } else {
-                  System.out.println("Number of classes must be 1 to 8");
-                 flag = false;
-                              }
 
                 // Working on registratio  number
                 if (registration.length() > 6) {
@@ -99,14 +97,10 @@ public class CaProjectone {
                 if (!validation2) {
                     System.out.println("Third and fourth characters must be letter");
                     flag = false;
-                } else {
-                    System.out.println("Student number is valid");
                 }
                 if (!validation3) {
                     System.out.println("Fifth character must be a letter or a nunber");
                     flag = false;
-                } else {
-                    System.out.println("Student number is valid");
                 }
                 if (!validation4) {
                     System.out.println("The following characters must be number");
@@ -115,23 +109,27 @@ public class CaProjectone {
                     System.out.println("Student number is valid");
                 }
                 //Workload
-                String light = "";
+                String workLoad = "";
                 if (classesNum == 1) {
-                    light = "Very Light";
+                    workLoad = "Very Light";
                 } else if (classesNum == 2) {
-                    light = "Light";
+                    workLoad = "Light";
                 } else if (classesNum >= 3 && classesNum <= 5) {
-                    light = "Part Time";
+                    workLoad = "Part Time";
                 } else if (classesNum >= 6) {
-                    light = "Full Time";
-                }
-
-                if (flag) {
-                    System.out.println("write into the file");
-                    bw.write(registration + " - " + splitString[1] + "\n" + light + "\n");
+                    workLoad = "Full Time";
                 }
                 //Verifying and write the details in the doc.
-
+                if (flag) {
+                    bw.write(registration + " - " + splitString[1] + "\n" + workLoad + "\n");
+                }
+               
+                int parsedFirstTwo = Integer.parseInt(String.valueOf(firstTwo));
+                boolean validationYear = (parsedFirstTwo >= 20);
+                 if (!validationYear) {
+                    System.out.println("Registraion year must be 2020 or more");
+                    flag = false;
+                 }
             }
             bw.close();
             sc.close();
